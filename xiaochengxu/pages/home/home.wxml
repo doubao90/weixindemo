@@ -1,0 +1,35 @@
+<!--pages/home/home.wxml-->
+<view>
+  <view class="section">
+    <icon type='search' size='20'></icon>
+    <input type="text" placeholder="请输入搜索内容" />
+    <button type='primary' size="mini">搜索</button>
+  </view>
+  <swiper indicator-dots=true
+  autoplay=true
+  next-margin="550rpx"
+  previous-margin='300rpx'
+  indicator-active-color="#fff"
+  >
+    <swiper-item wx:for="{{swiperImg}}">
+        <image src='{{item}}'></image>
+    </swiper-item>
+  </swiper>
+  <scroll-view class='type-navbar' scroll-x="true">
+ 
+    <view class='type-box'wx:for="{{category}}" >
+     
+      <view class='navItem' id="{{item.id}}">{{item.name}}</view>
+    </view>
+  </scroll-view>
+  <view>公告：<text>商城新开张优惠多多，戳 戳 戳 看详情</text></view>
+  <view class='goodsWap'>
+      <view class='goodsItem'wx:for="{{goodList}}">
+          <image src='{{item.pic}}'></image>
+          <view>{{item.name}}</view>
+          <view class='ItemPrice'>￥{{item.minPrice}}</view>
+      </view>
+    
+  </view>
+  <view hidden='{{dataState}}'>没有更过数据了</view>
+</view>

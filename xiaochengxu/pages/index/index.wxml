@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view class="container">
+ <image class='imgTitle' src='/image/more/title8.png'></image>
+ <image class='img1' src='/image/more/wave.png'></image>
+ <image class='img2' src='/image/more/confirm-word1.png'></image>
+ <image class='img3' src='/image/more/wave.png'></image>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <button class='go' bindtap="goHome">进入店铺</button>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>

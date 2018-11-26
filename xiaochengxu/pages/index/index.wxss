@@ -1,0 +1,78 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #000;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+.container{
+  background: #69C3AA;
+}
+.imgTitle{
+  width:600rpx;
+  height:200rpx;
+  margin-top:100rpx;
+
+}
+.img1{
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 0;
+  opacity: 0.725;
+  height: 260rpx;
+  width: 2250rpx;
+  animation: wave1 10s linear infinite;
+}
+@keyframes ware1
+{
+  0% {transform:translateX(375rpx)}
+  100% {transform:translateX(1125rpx)}
+
+}
+.img2{
+  position: absolute;
+  bottom: 328rpx;
+  width:579rpx;
+height:200rpx;
+z-index: 5;
+
+}
+.img3{
+ position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  height: 260rpx;
+  width: 2250rpx;
+  animation: wave 10s linear infinite;
+}
+@keyframes wave
+{
+  0% {transform:translateX(125rpx)}
+  100% {transform:translateX(1125rpx)}
+
+}
+.go{
+  z-index: 8;
+  background: #69C3AA;
+  position: absolute;
+  bottom: 50rpx;
+  font-size: 36rpx;
+  color: #fff;
+  padding: 0 20rpx;
+}

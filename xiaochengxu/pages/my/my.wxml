@@ -1,0 +1,5 @@
+<view class='myWap'>
+  <view>地址</view>
+  <map scale="10"  latitude='39.9219'  longitude='116.44355'  markers="{{markers}}"></map>
+<button bindtap="getLoction">双方的时代</button>
+</view>

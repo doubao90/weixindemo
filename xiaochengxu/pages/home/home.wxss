@@ -1,0 +1,66 @@
+/* pages/home/home.wxss */
+.section{
+  position: relative;
+  border:1px solid #ccc;
+overflow:hidden;
+height:70rpx;
+
+}
+.section icon{
+  position: absolute;
+  left: 10rpx;
+  margin-top: 13rpx;
+}
+.section input{
+  position: absolute;
+  left: 80rpx;
+  width:520rpx;
+height:70rpx;
+line-height:70rpx;
+
+}
+.section  button{
+  position: absolute;
+  right: 0;
+  width: 180rpx;
+}
+.navItem{
+  padding: 0 30rpx;
+  font-size:32rpx;
+
+}
+.type-navbar{
+  white-space: nowrap;
+  height: 88rpx;
+  width: 100%;
+  background-color: #fff;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.type-box{
+  width:160rpx;
+  box-sizing: content-box;
+  font-size: 24rpx;
+  line-height: 84rpx;
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+}
+.goodsWap{
+  display: flex;
+  justify-content: space-between;  
+  flex-wrap:wrap;
+  box-sizing: content-box;
+  padding: 24rpx;
+}
+.goodsItem{
+  width: 335rpx;
+  /* padding: 5rpx; */
+}
+.goodsItem image{
+   width: 339rpx;
+   height: 339rpx;
+}
