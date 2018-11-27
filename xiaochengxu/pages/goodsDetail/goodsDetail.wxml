@@ -1,0 +1,62 @@
+<view class='wapper'>
+  <swiper 
+  indicator-dots=true
+  indicator-color="#ccc"
+  autoplay=true
+  >
+      <swiper-item wx:for="{{imgUrls}}">
+        <image src="{{item}}" class="slide-image" width="355" height="150"/>
+      </swiper-item>
+  </swiper>
+  <view style='background:#fff'>
+    <view style='float:left;line-height:30px;padding-left:20rpx;'> 
+      <view style=''>10-12岁袜子</view>
+      <view style='color:red;font-size:24rpx;'>分享有赏，好友下单后可得5元现金奖励</view>
+    </view>
+    <view class='sharePrice'>
+      <image src='/image/qd.png'></image>
+      <view style='font-size:24rpx;'>分享有赏</view>
+    </view>
+    <view class='buyInfo'>
+        <text>￥90</text>
+        <text>购买15次</text>
+        <text>共收到11次好评</text>
+    </view>
+  </view>
+  <view style='margin-top:20rpx;background:#fff;padding-bottom:30rpx;'>
+    <view style='line-height:40px;padding:20rpx;'>商品介绍</view>
+    <view class='goodsImg'>
+     <image src='/image/goods01.png'></image>
+      <image src='/image/goods02.png'></image>
+    </view>
+    <text style='padding:40rpx 20rpx;'>尼多熊袜子，适合0-1岁宝宝，秋冬款</text>
+  </view>
+  <!-- 评价 -->
+  <view style='background:#fff;margin-top:40rpx;margin-bottom:102rpx;'>
+    <view class='commentTitle'>大家评价<text style="">(1)</text></view>
+    <view class='commentBox' style='display:flex;padding:20rpx;'>
+      <image src='/image/banner03.jpg'></image>
+      <view style='padding-left:20rpx;'>
+        <view style='padding-bottom:20rpx;'>系统默认好评</view>
+        <text>2018-08-08 12:02:02</text>
+      </view>
+    </view>
+  </view>
+  <!-- foot -->
+  <view class='footBox'>
+    <view class='foot1'>
+      <image src='/image/kefu.png'></image>
+      <text>客服</text>
+    </view>
+    <view class='foot1'>
+      <image src='/image/icon-cart.png'></image>
+      <text>购物车</text>
+    </view>
+    <view class='foot2' style='background:#ff6850'>
+      <text>加入购物车</text>
+    </view>
+    <view class='foot2'>
+      <text>立即购买</text>
+    </view>
+  </view>
+</view>

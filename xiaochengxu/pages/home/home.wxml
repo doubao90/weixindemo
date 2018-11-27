@@ -1,9 +1,9 @@
 <!--pages/home/home.wxml-->
-<view>
+<view style='background:#f5f5f9'>
   <view class="section">
     <icon type='search' size='20'></icon>
-    <input type="text" placeholder="请输入搜索内容" />
-    <button type='primary' size="mini">搜索</button>
+    <input type="text" placeholder="请输入搜索内容"  bindinput='SearchInput' />
+    <button type='primary' size="mini" bindtap='search'>搜索</button>
   </view>
   <swiper indicator-dots=true
   autoplay=true
@@ -12,21 +12,21 @@
   indicator-active-color="#fff"
   >
     <swiper-item wx:for="{{swiperImg}}">
-        <image src='{{item}}'></image>
+        <image src='{{item.picUrl}}'></image>
     </swiper-item>
   </swiper>
   <scroll-view class='type-navbar' scroll-x="true">
  
     <view class='type-box'wx:for="{{category}}" >
      
-      <view class='navItem' id="{{item.id}}">{{item.name}}</view>
+      <view class='navItem' class="{{categoryId==item.id?'checkItem':''}}" id="{{item.id}}" bindtap="checknav">{{item.name}}</view>
     </view>
   </scroll-view>
-  <view>公告：<text>商城新开张优惠多多，戳 戳 戳 看详情</text></view>
+  <view class='topic'>公告：<text>商城新开张优惠多多，戳 戳 戳 看详情</text></view>
   <view class='goodsWap'>
-      <view class='goodsItem'wx:for="{{goodList}}">
+      <view class='goodsItem'wx:for="{{goodList}}" id="{{item.id}}" bindtap='goodsDetail'>
           <image src='{{item.pic}}'></image>
-          <view>{{item.name}}</view>
+          <view style='padding-left:10rpx;padding-top:10rpx;'>{{item.name}}</view>
           <view class='ItemPrice'>￥{{item.minPrice}}</view>
       </view>
     

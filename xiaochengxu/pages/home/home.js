@@ -18,7 +18,7 @@ Page({
       { id: 6, name: '套装' }
     ],
 
-      categoryId: '0',
+      categoryId: 0,
       nameLike: '',
       page: 1,
       pageSize: 20,
@@ -32,6 +32,7 @@ Page({
    */
   onLoad: function (options) {
     var This=this;
+    This.bannerList()
     // nav列表
     wx.request({
       url: app.globalData.httpUrl +'/shop/goods/category/all',
@@ -49,12 +50,11 @@ Page({
             activeCategoryId: 0,
             curPage: 1
           });
-          console.log(data.data)
         }
-        
+        This.list(0)
       }
     })
-    
+  
   },
 
   /**
@@ -62,14 +62,14 @@ Page({
    */
   onReady: function () {
     var This=this;
-    This.list()
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(this)
+
   },
 
   /**
@@ -90,7 +90,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log(444)
+ 
 
   },
 
@@ -101,10 +101,8 @@ Page({
     var That=this;
     That.setData({
       page:That.data.page+1
-      
-      // That.searchObj.page = searchObj.page++
     })
-    That.list()
+    That.list(That.data.categoryId)
    
   },
 
@@ -114,12 +112,29 @@ Page({
   onShareAppMessage: function () {
 
   },
-  list:function(append){
+  // banner图
+  bannerList:function(){
+    var This=this;
+    wx.request({
+      url: app.globalData.httpUrl +'/banner/list',
+      data:{
+        key:'mallName'
+      },
+      method: 'post',
+      success(res){
+        
+        This.setData({
+          swiperImg: res.data.data
+        })
+      }
+    })
+  },
+  list:function(id,state){
     var This=this;
     wx.request({
       url: app.globalData.httpUrl +'/shop/goods/list', 
       data: {
-        categoryId:This.data.categoryId,
+        categoryId:id,
         nameLike: This.data.nameLike,
         page: This.data.page,
         pageSize: This.data.pageSize
@@ -131,30 +146,68 @@ Page({
         wx.showLoading({
           title: '加载中...',
         })
-        if(res.data.code!=404){
-          for (var i = 0; i < res.data.data.length; i++) {
-            This.data.goodList.push(res.data.data[i])
-          }
-          // arrlist =res.data.data;
 
-          This.setData({
-            goodList: This.data.goodList,
-            dataState:true
-          })
-          wx.hideLoading()
+          if (res.data.code != 404) {
+            if(state){
+              This.data.goodList=[];
+            }
+              for (var i = 0; i < res.data.data.length; i++) {
+                This.data.goodList.push(res.data.data[i])
+              }
+              This.setData({
+                goodList: This.data.goodList,
+                dataState: true
+              })
+              
+            
+            wx.hideLoading();
+          }
+          if (res.data.code == 404) {
+            if(state){
+              This.setData({
+                goodList: [],
+              
+              })
+            }
+            This.setData({
+              dataState: false
+            })
+            wx.hideLoading();
+          }
         }
-        if (res.data.code == 404){
-          This.setData({
-            dataState:false
-          })
-          
-        }
-       
-        
-        console.log(This.data.goodList)
-      }
+ 
+   
     })
   
+  },
+  //切换nav
+  checknav:function(data){
+    this.data.goodList=[];
+    this.data.page=1;
+    this.setData({
+      categoryId: data.currentTarget.id
+    })
+    // this.data.categoryId = data.currentTarget.id
+    this.list(data.currentTarget.id,true)
+  },
+  // 搜索输入框
+  SearchInput:function(e){
+    this.setData({
+      nameLike: e.detail.value
+    })
+  },
+// 搜索
+  search:function(){
+    var This=this
+    this.data.page = 1;
+    this.list(This.data.categoryId,true)
+  },
+  // 跳转物品详情页
+  goodsDetail:function(e){
+    console.log(e)
+    wx.redirectTo({
+      url: '/pages/goodsDetail/goodsDetail?id='+e.currentTarget.id
+    })
   }
 
 })
